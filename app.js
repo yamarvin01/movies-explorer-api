@@ -11,8 +11,8 @@ const { NotFoundError } = require('./src/errors/notFoundError');
 const { handleErrors, handleUncaughtException } = require('./src/errors/handleErrors');
 
 const authRoutes = require('./src/routes/auth');
-const cardRoutes = require('./src/routes/cards');
 const userRoutes = require('./src/routes/users');
+const movieRoutes = require('./src/routes/movies');
 const auth = require('./src/middlewares/auth');
 const cors = require('./src/middlewares/cors');
 
@@ -21,11 +21,11 @@ const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 const app = express();
 
 mongoose.connect(
-  'mongodb://localhost:27017/mestodb',
+  'mongodb://localhost:27017/bitfilmsdb',
   { useNewUrlParser: true },
   (err) => {
     if (err) throw err;
-    console.log('Connected to MongoDB!');
+    console.log('Connected to MongoDB, bitfilmsdb!');
   },
 );
 
@@ -42,7 +42,7 @@ app.get('/crash-test', () => {
 app.use('/', authRoutes);
 app.use(auth);
 app.use('/', userRoutes);
-app.use('/', cardRoutes);
+app.use('/', movieRoutes);
 app.use(() => { throw new NotFoundError('Страница по указанному маршруту не найдена'); });
 app.use(errorLogger);
 
