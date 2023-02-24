@@ -6,7 +6,7 @@ const { NoRightsError } = require('../errors/noRightsError');
 
 const getMovies = (req, res, next) => {
   Movie.find()
-    .then((cards) => res.send(cards))
+    .then((movies) => res.send(movies))
     .catch(next);
 };
 

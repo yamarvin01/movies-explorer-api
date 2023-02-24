@@ -10,6 +10,7 @@ const { ValidationError } = require('../errors/validationError');
 
 const signIn = (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email, password);
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
