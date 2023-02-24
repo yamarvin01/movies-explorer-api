@@ -1,9 +1,7 @@
-/* eslint-disable no-useless-escape */
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { signIn, signUp } = require('../controllers/auth');
-
-const emailRegExp = /[\w\-\_\.]+@[\w\-\_\.]+\.[\w\-\_\.]+/;
+const { emailRegExp } = require('../constants/constants');
 
 router.post(
   '/signup',

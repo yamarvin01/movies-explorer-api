@@ -1,7 +1,5 @@
-/* eslint-disable no-useless-escape */
 const mongoose = require('mongoose');
-
-const regularExpression = /https?:\/\/(www\.)?[\w\-]+\.[\w\-]+\/*[\w\-\/\.\+\(\)\[\]~:?#@!$&'*,;=]*#?/;
+const { urlRegExp } = require('../constants/constants');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -29,7 +27,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const regExp = regularExpression;
+        const regExp = urlRegExp;
         return regExp.test(v);
       },
     },
@@ -39,7 +37,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const regExp = regularExpression;
+        const regExp = urlRegExp;
         return regExp.test(v);
       },
     },
@@ -49,7 +47,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const regExp = regularExpression;
+        const regExp = urlRegExp;
         return regExp.test(v);
       },
     },

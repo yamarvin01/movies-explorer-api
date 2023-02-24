@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const {
@@ -6,8 +5,7 @@ const {
   createMovie,
   deleteMovieById,
 } = require('../controllers/movies');
-
-const urlRegExp = /https?:\/\/(www\.)?[\w\-]+\.[\w\-]+\/*[\w\-\/\.\+\(\)\[\]~:?#@!$&'*,;=]*#?/;
+const { urlRegExp } = require('../constants/constants');
 
 router.get('/movies', getMovies);
 
